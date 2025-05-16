@@ -1,0 +1,729 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ddffd ($fdfdfd) - Chaotic Degen Adventure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+        
+        :root {
+            --primary: #ff3e9d;
+            --secondary: #4c14ff;
+            --accent: #00ff8c;
+            --dark: #120338;
+            --light: #f0e6ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 62, 157, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 90% 60%, rgba(76, 20, 255, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 50% 90%, rgba(0, 255, 140, 0.1) 0%, transparent 30%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(18, 3, 56, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Bangers', cursive;
+            font-size: 28px;
+            color: var(--accent);
+            text-shadow: 3px 3px 0 var(--primary);
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding-top: 70px;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%234c14ff' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill-opacity='0.1'/%3E%3C/svg%3E");
+            z-index: -1;
+            animation: chaos 60s linear infinite;
+        }
+        
+        @keyframes chaos {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .token-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 30px var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Bangers', cursive;
+            font-size: 60px;
+            color: var(--light);
+            text-shadow: 4px 4px 0 var(--secondary);
+            animation: pulse 3s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 30px var(--accent);
+            }
+            100% {
+                transform: scale(1.1);
+                box-shadow: 0 0 50px var(--accent), 0 0 80px var(--primary);
+            }
+        }
+        
+        .hero h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 64px;
+            margin-bottom: 15px;
+            color: var(--accent);
+            text-shadow: 5px 5px 0 var(--primary);
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            color: var(--light);
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            font-family: 'Bangers', cursive;
+            font-size: 24px;
+            border-radius: 50px;
+            border: 3px solid var(--light);
+            box-shadow: 5px 5px 0 var(--dark);
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 0 var(--dark);
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        .cta-button:hover:before {
+            left: 100%;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            color: var(--dark);
+            border-radius: 50%;
+            font-size: 22px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+            background: var(--primary);
+            color: var(--light);
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        section:nth-child(odd) {
+            background-color: rgba(76, 20, 255, 0.1);
+        }
+        
+        .section-title {
+            font-family: 'Bangers', cursive;
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-shadow: 3px 3px 0 var(--dark);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        .about-content {
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 30px;
+            background: rgba(76, 20, 255, 0.1);
+            border-radius: 20px;
+            border: 2px dashed var(--accent);
+            position: relative;
+        }
+        
+        .about-content::after {
+            content: "WOW!";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 15px;
+            transform: rotate(15deg);
+            font-family: 'Bangers', cursive;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        
+        .tokenomics {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .tokenomics-card {
+            background: var(--dark);
+            color: var(--light);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 2px solid var(--primary);
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 10px 10px 0 var(--secondary);
+            transform: rotate(-1deg);
+        }
+        
+        .token-address {
+            font-family: monospace;
+            background: rgba(0, 255, 140, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px dashed var(--accent);
+            word-break: break-all;
+        }
+        
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        .roadmap-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .roadmap-item:nth-child(odd) .roadmap-content {
+            transform: rotate(2deg);
+        }
+        
+        .roadmap-item:nth-child(even) .roadmap-content {
+            transform: rotate(-2deg);
+        }
+        
+        .roadmap-icon {
+            flex: 0 0 100px;
+            height: 100px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bangers', cursive;
+            font-size: 30px;
+            color: var(--light);
+            box-shadow: 5px 5px 0 var(--dark);
+            margin: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .roadmap-content {
+            flex: 1;
+            background: var(--light);
+            color: var(--dark);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 0 var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .roadmap-content h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .roadmap-content p {
+            font-size: 16px;
+        }
+        
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: calc(100% - 100px);
+            background: var(--accent);
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        
+        .how-to-buy {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .step-card {
+            flex: 0 0 calc(33.333% - 20px);
+            min-width: 300px;
+            background: var(--dark);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bangers', cursive;
+            font-size: 24px;
+            box-shadow: 3px 3px 0 var(--primary);
+        }
+        
+        .step-card h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 28px;
+            margin: 20px 0;
+            color: var(--accent);
+        }
+        
+        .step-card p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+            position: relative;
+            border-top: 5px solid var(--accent);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-logo h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 36px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-links h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--accent);
+            font-size: 14px;
+            color: rgba(240, 230, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .token-logo {
+                width: 150px;
+                height: 150px;
+                font-size: 45px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav {
+                justify-content: center;
+            }
+            
+            .roadmap::before {
+                left: 30px;
+            }
+            
+            .roadmap-item, 
+            .roadmap-item:nth-child(odd) {
+                flex-direction: row;
+            }
+            
+            .roadmap-icon {
+                flex: 0 0 60px;
+                height: 60px;
+                font-size: 20px;
+                margin-left: 0;
+            }
+            
+            .roadmap-content {
+                margin-left: 20px;
+            }
+            
+            .step-card {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">$fdfdfd</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#tokenomics">Tokenomics</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="#how-to-buy">How to Buy</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="token-logo">fdfd</div>
+        <h1>ddffd: Chaos Unleashed, Profits Unchained</h1>
+        <p>The ultimate degen playground where chaos meets opportunity - ride the wave or get swept away!</p>
+        <a href="https://gofundmeme.io/campaigns/3nA1o9VnEVgrD7UL3pCRoYmP9xwX5dDZZzT2Wam3GhZc" class="cta-button">Buy $fdfdfd</a>
+        <div class="social-icons">
+            <a href="https://nuelyoungtech.xyz" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="currentColor">
+                    <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/>
+                </svg>
+            </a>
+            <a href="https://t.me/nuelyoungtek" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512" fill="currentColor">
+                    <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512" fill="currentColor">
+                    <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About $fdfdfd</h2>
+            <div class="about-content">
+                <p>Welcome to the chaotic world of ddffd! Born from the depths of degen madness, $fdfdfd is not just a token - it's a wild rollercoaster through the crypto wilderness. We're the meme token that doesn't just embrace chaos, we ARE chaos! No roadmap can contain us, no strategy can predict us - only pure unfiltered degen energy powers our rocket to the moon! Normies beware, this is where sanity comes to die and fortunes come to multiply!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tokenomics" class="tokenomics">
+        <div class="container">
+            <h2 class="section-title">Tokenomics</h2>
+            <div class="tokenomics-card">
+                <h3>Total Supply</h3>
+                <p style="font-size: 36px; font-family: 'Bangers', cursive;">1,000,000,000 $fdfdfd</p>
+                <h3>Token Address</h3>
+                <div class="token-address">3nA1o9VnEVgrD7UL3pCRoYmP9xwX5dDZZzT2Wam3GhZc</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <h2 class="section-title">Chaotic Roadmap</h2>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-icon">1</div>
+                <div class="roadmap-content">
+                    <h3>Phase 1: Chaos Genesis</h3>
+                    <p>Token launch, community building, and initial meme explosion! Maximum degen energy activated!</p>
+                </div>
+            </div>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-icon">2</div>
+                <div class="roadmap-content">
+                    <h3>Phase 2: Viral Mayhem</h3>
+                    <p>Marketing tsunamis, influencer partnerships, and general internet insanity.</p>
+                </div>
+            </div>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-icon">3</div>
+                <div class="roadmap-content">
+                    <h3>Phase 3: Degen Ascension</h3>
+                    <p>Exchange listings, expanded utility, and complete market domination!</p>
+                </div>
+            </div>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-icon">?!</div>
+                <div class="roadmap-content">
+                    <h3>Phase 4: ??? PROFIT ???</h3>
+                    <p>We're degens, not fortune tellers! Who knows what glorious madness awaits?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-buy">
+        <div class="container">
+            <h2 class="section-title">How to Buy $fdfdfd</h2>
+            <div class="how-to-buy">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Get a SOL Wallet</h3>
+                    <p>Set up a Solana-compatible wallet like Phantom or Solflare to store your $fdfdfd tokens.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Visit GoFundMeme</h3>
+                    <p>Head to GoFundMeme's platform where $fdfdfd is available for trading.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Swap SOL for $fdfdfd</h3>
+                    <p>Use your SOL to buy $fdfdfd tokens and join the chaotic adventure!</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://gofundmeme.io/campaigns/3nA1o9VnEVgrD7UL3pCRoYmP9xwX5dDZZzT2Wam3GhZc" class="cta-button">Buy Now on GoFundMeme</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>$fdfdfd</h2>
+                    <p>The ultimate degen chaos token on Solana!</p>
+                    <div class="social-icons">
+                        <a href="https://nuelyoungtech.xyz" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="currentColor">
+                                <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/nuelyoungtek" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512" fill="currentColor">
+                                <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512" fill="currentColor">
+                                <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#tokenomics">Tokenomics</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="https://gofundmeme.io/campaigns/3nA1o9VnEVgrD7UL3pCRoYmP9xwX5dDZZzT2Wam3GhZc">Buy $fdfdfd</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 $fdfdfd. All rights reserved. This is a meme token; invest at your own risk (and for the lulz).</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+```
